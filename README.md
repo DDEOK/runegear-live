@@ -201,4 +201,4 @@ curl -s https://raw.githubusercontent.com/DDEOK/runegear-live/main/config.json
 ## 개발 중 확인
 
 게임 개발 빌드에는 이 파일 없이 모든 경우(강제·선택 업데이트, 공지·이벤트 여러 개, 받기 실패, 캐시 사용)를 만드는 개발 명령이 있다.
-명령 목록은 게임 저장소의 사용법 문서에 있다.
+명령 목록은 RuneGear 볼트 문서 「RuneGear 사용법」의 개발 명령 절에 있다(게임 저장소에는 없다).
