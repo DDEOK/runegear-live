@@ -15,7 +15,12 @@ MAX_ITEMS = 10
 MAX_TITLE = 40
 MAX_BODY = 600
 ID = re.compile(r"^[a-z0-9._-]{1,40}$")
-VERSION = re.compile(r"^\d+\.\d+\.\d+(\+\d+)?$")
+# 게임은 선택 업데이트의 하루 기록을 `update.<버전>` id로 남기므로 이 머리로 시작하는 공지·이벤트 id를 버린다.
+RESERVED_ID = "update."
+# 그림 ID: 게임 아틀라스 ID 모양(소문자·숫자·.-_ 1~64자). 모양이 틀리면 게임은 그림 없이 보인다.
+IMAGE = re.compile(r"^[a-z0-9._-]{1,64}$")
+# 빌드 번호는 1 이상(게임은 +0을 형식 오류로 본다). 숫자는 9자리까지.
+VERSION = re.compile(r"^\d{1,9}\.\d{1,9}\.\d{1,9}(\+0*[1-9]\d{0,8})?$")
 HIDE = {"none", "today", "forever"}
 OPEN = {"", "shop", "codex", "research", "history", "character", "stage", "settings"}
 STORE = ("https://", "market://", "itms-apps://")
@@ -72,6 +77,8 @@ def check(path):
             item_id = item.get("id", "")
             if not ID.match(item_id):
                 errors.append(f"{where}: id 「{item_id}」는 소문자·숫자·.-_ 1~40자여야 한다")
+            elif item_id.startswith(RESERVED_ID):
+                errors.append(f"{where}: id 「{item_id}」는 {RESERVED_ID}로 시작할 수 없다(게임이 선택 업데이트 기록에 쓴다)")
             elif item_id in seen:
                 errors.append(f"{where}: id 「{item_id}」가 이미 쓰였다(공지·이벤트 통틀어 하나)")
             seen.add(item_id)
@@ -104,6 +111,9 @@ def check(path):
                 errors.append(f"{where}: end가 start보다 늦어야 한다")
             if item.get("hide", "today") not in HIDE:
                 errors.append(f"{where}: hide는 {sorted(HIDE)} 중 하나다")
+            image = item.get("image", "")
+            if image and not IMAGE.match(image):
+                errors.append(f"{where}: image 「{image}」는 소문자·숫자·.-_ 1~64자 그림 ID여야 한다(게임은 그림 없이 보인다)")
             if item.get("open", "") not in OPEN:
                 errors.append(f"{where}: open은 {sorted(OPEN - {''})} 중 하나다")
     return errors
