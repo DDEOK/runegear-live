@@ -11,3 +11,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: python3 tools/validate.py config.json
+      - run: for f in examples/*.json; do python3 tools/validate.py "$f" || exit 1; done

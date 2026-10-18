@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "android": {
+    "minVersion": "0.41.0",
+    "latestVersion": "0.42.0",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.ddeok.runegear"
+  },
+  "ios": {
+    "minVersion": "0.41.0",
+    "latestVersion": "0.42.0",
+    "storeUrl": "https://apps.apple.com/app/id6824164217"
+  },
+  "notices": [],
+  "events": []
+}

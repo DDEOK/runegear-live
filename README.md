@@ -15,6 +15,45 @@ https://raw.githubusercontent.com/DDEOK/runegear-live/main/config.json
 > 푸시하면 GitHub Actions가 같은 검사를 다시 돌리지만, 검사가 실패해도 파일은 이미 나가 있다.
 > 큰 변경은 브랜치에서 고치고 검사가 통과한 뒤 `main`에 합친다.
 
+## 저장소 구성
+
+| 경로 | 무엇 |
+|---|---|
+| `config.json` | 앱이 실제로 읽는 파일. 이것만 플레이어에게 나간다 |
+| `examples/` | 복사해 쓰는 예시(공지·이벤트, 선택 업데이트, 강제 업데이트). 앱은 읽지 않는다 |
+| `tools/validate.py` | 올리기 전 검사 |
+| `.github/workflows/validate.yml` | 푸시마다 `config.json`과 `examples/`를 검사한다 |
+
+## 다른 기기에서 시작하기
+
+어느 기기에서든 고칠 수 있다.
+서명 키나 스토어 키가 필요 없고, git과 python3, DDEOK 계정 로그인만 있으면 된다.
+
+```bash
+gh auth status
+```
+
+`Logged in to github.com account DDEOK`가 보여야 한다.
+다른 계정이면 `gh auth switch`로 바꾼다.
+
+```bash
+gh repo clone DDEOK/runegear-live ~/Develop/github/ddeok/runegear-live
+cd ~/Develop/github/ddeok/runegear-live
+python3 tools/validate.py
+```
+
+「통과」가 나오면 준비가 끝났다.
+윈도우에서는 `python3` 대신 `py`를 쓴다.
+
+이미 복제한 기기는 고치기 전에 반드시 최신을 받는다.
+다른 기기에서 올린 공지를 모르고 덮어쓰면 그 공지가 플레이어에게서 사라진다.
+
+```bash
+git pull --ff-only
+```
+
+운영 절차와 결정의 이유는 RuneGear 볼트 문서 「RuneGear 원격 설정 운영」에 있다.
+
 ## 무엇을 정하나
 
 | 칸 | 하는 일 |
@@ -122,10 +161,18 @@ https://raw.githubusercontent.com/DDEOK/runegear-live/main/config.json
 
 ## 고치는 법
 
-1. `config.json`을 고친다.
-2. `python3 tools/validate.py`로 검사한다. 「통과」가 나와야 한다.
-3. 커밋하고 `main`에 푸시한다.
-4. 반영까지 몇 분 걸린다. GitHub의 raw 주소가 약 5분 동안 사본을 내주기 때문이다.
+1. `git pull --ff-only`로 최신을 받는다.
+2. `config.json`을 고친다. 처음이면 `examples/`에서 비슷한 파일의 항목을 복사한다.
+3. `python3 tools/validate.py`로 검사한다. 「통과」가 나와야 한다.
+4. 커밋하고 `main`에 푸시한다. 커밋 메시지에 무엇을 왜 띄우거나 내렸는지 적는다(이 저장소의 이력이 곧 운영 기록이다).
+5. 반영까지 몇 분 걸린다. GitHub의 raw 주소가 약 5분 동안 사본을 내주기 때문이다.
+6. 아래 명령으로 앱이 받을 내용을 확인한다.
+
+```bash
+curl -s https://raw.githubusercontent.com/DDEOK/runegear-live/main/config.json
+```
+
+푸시한 뒤 GitHub의 Actions 탭에서 `validate`가 초록인지도 본다.
 
 자주 하는 일:
 

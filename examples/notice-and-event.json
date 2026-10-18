@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "android": {
+    "minVersion": "0.41.0",
+    "latestVersion": "0.41.0",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.ddeok.runegear"
+  },
+  "ios": {
+    "minVersion": "0.41.0",
+    "latestVersion": "0.41.0",
+    "storeUrl": "https://apps.apple.com/app/id6824164217"
+  },
+  "notices": [
+    {
+      "id": "notice.2026-11-welcome",
+      "start": "2026-11-01T00:00:00+09:00",
+      "end": "2026-11-15T00:00:00+09:00",
+      "title": { "ko": "원정대 소식", "en": "Expedition News" },
+      "body": {
+        "ko": "룬기어 원정대에 오신 것을 환영합니다.\n첫 원정은 사막 유적에서 시작합니다.",
+        "en": "Welcome to the RuneGear expedition.\nYour first run starts in the desert ruins."
+      },
+      "hide": "forever"
+    }
+  ],
+  "events": [
+    {
+      "id": "event.2026-11-week1",
+      "start": "2026-11-01T00:00:00+09:00",
+      "end": "2026-11-08T00:00:00+09:00",
+      "title": { "ko": "이번 주 원정", "en": "This Week's Run" },
+      "body": {
+        "ko": "상점에서 새 부활권 묶음을 확인해 보세요.",
+        "en": "Check the shop for a new revive bundle."
+      },
+      "image": "",
+      "open": "shop",
+      "hide": "today"
+    }
+  ]
+}
