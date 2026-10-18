@@ -17,8 +17,8 @@
       "end": "2026-11-15T00:00:00+09:00",
       "title": { "ko": "원정대 소식", "en": "Expedition News" },
       "body": {
-        "ko": "룬기어 원정대에 오신 것을 환영합니다.\n첫 원정은 사막 유적에서 시작합니다.",
-        "en": "Welcome to the RuneGear expedition.\nYour first run starts in the desert ruins."
+        "ko": "룬기어 원정대에 오신 것을 환영합니다.\n첫 원정은 모래 유적에서 시작합니다.",
+        "en": "Welcome to the RuneGear expedition.\nYour first run starts in the Sand Ruins."
       },
       "hide": "forever"
     }

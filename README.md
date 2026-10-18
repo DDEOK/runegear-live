@@ -59,7 +59,7 @@ git pull --ff-only
 | 칸 | 하는 일 |
 |---|---|
 | `android`·`ios`의 `minVersion` | 이보다 낮은 앱은 강제 업데이트 창에서 멈추고 스토어로 보낸다 |
-| `android`·`ios`의 `latestVersion` | 이보다 낮은 앱에는 「새 버전이 나왔어요」 창(나중에·업데이트)을 띄운다 |
+| `android`·`ios`의 `latestVersion` | 이보다 낮은 앱에는 「새 버전이 나왔습니다」 창(나중에·업데이트)을 띄운다 |
 | `android`·`ios`의 `storeUrl` | 업데이트 버튼이 여는 스토어 주소 |
 | `notices` | 시작할 때 차례로 띄우는 공지 창 |
 | `events` | 공지 다음에 차례로 띄우는 이벤트 창 |
